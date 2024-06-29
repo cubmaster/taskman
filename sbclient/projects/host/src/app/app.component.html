@@ -1,0 +1,15 @@
+<div class="mb-3">
+    <div class="card">
+      <div class="card-body">
+        {{response.scene.description}}
+      </div>
+    </div>
+    <div class="list-group">
+      <button type="button" class="list-group-item list-group-item-action" (click)="onAction(option)" *ngFor="let option of response?.options">
+        {{option}}
+      </button>
+    </div>
+    <div>
+      <input class="form-control" #textFieldRef/><button class=".btn .btn-primary" (click)="onAction(textFieldRef.value)">send</button>
+    </div>
+</div>

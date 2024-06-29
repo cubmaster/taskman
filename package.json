@@ -1,0 +1,25 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "description": "cmVmdGtuOjAxOjE3MjczNzY3MDg6UURlaTJ2S2xwZklrZzVoM1JxVHZHY1VLYUdp",
+  "workspaces": [
+    "sbclient",
+    "sbserver"
+  ],
+  "scripts": {
+    "start":"npm start --workspace=sbclient & npm start --workspace=sbserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubmaster/storybook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cubmaster/storybook/issues"
+  },
+  "homepage": "https://github.com/cubmaster/storybook#readme",
+  "dependencies": {
+    "@angular/router": "^16.2.7"
+  }
+}

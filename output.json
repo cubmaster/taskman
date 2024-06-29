@@ -1,0 +1,9 @@
+{
+	"player":{
+		"name":"player_name",
+		"level":"player_level",
+		"inventory":[]
+	},
+	"scene":"",
+	"options":[]
+}
