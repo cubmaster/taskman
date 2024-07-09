@@ -16,6 +16,7 @@
     "langchain": "^0.0.153",
     "mongodb": "^5.3.0",
     "mongoose": "^7.0.4",
+    "node-ical": "^0.18.0",
     "zod": "^3.22.2",
     "zod-to-json-schema": "^3.21.4"
   },

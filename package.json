@@ -7,7 +7,7 @@
     "sbserver"
   ],
   "scripts": {
-    "start":"npm start --workspace=sbclient & npm start --workspace=sbserver"
+    "start": "npm start --workspace=sbclient & npm start --workspace=sbserver"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/cubmaster/storybook#readme",
   "dependencies": {
-    "@angular/router": "^16.2.7"
+    "@angular/router": "^16.2.7",
+    "@azure/msal-angular": "^3.0.20",
+    "@azure/msal-browser": "^3.17.0",
+    "@fullcalendar/timegrid": "^6.1.14"
   }
 }

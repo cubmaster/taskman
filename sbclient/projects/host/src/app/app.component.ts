@@ -1,5 +1,7 @@
 import { Component ,ElementRef,OnInit, ViewChild} from '@angular/core';
-import { GameService,GameResponse, GameMove } from './services/game.service';
+import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
+import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,36 +10,32 @@ import { GameService,GameResponse, GameMove } from './services/game.service';
 })
 export class AppComponent implements  OnInit {
 
-  @ViewChild('textFieldRef', { static: false }) textFieldRef: ElementRef|any ;
-  title = 'host';
+  isIframe = false;
+  loginDisplay = false;
 
-  
-  response:GameResponse = new GameResponse();
-  constructor(private game: GameService){
+  constructor(private authService: MsalService) { }
 
+  ngOnInit() {
+    this.isIframe = window !== window.parent && !window.opener;
+  }
+
+  login() {
+    this.authService.loginPopup()
+      .subscribe({
+        next: (result) => {
+          console.log(result);
+          this.setLoginDisplay();
+        },
+        error: (error) => console.log(error)
+      });
+  }
+
+  setLoginDisplay() {
+    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+  }
+  logout(){
+    this.authService.logout()
   }
 
 
-  async ngOnInit() {
-
-    this.response = await this.game.startGame("Jon")
-    this.textFieldRef.nativeElement.value="";
-    
-  }
-
-  async onAction(action: string) {
-    const move:GameMove = {
-      player: {...this.response?.player},
-      action: action
-
-    }
-
-    this.response = await this.game.move(move);
-
-    this.textFieldRef.nativeElement.value="";
-  }
-
-  setval(action:string) {
-    alert(action)
-  }
 }

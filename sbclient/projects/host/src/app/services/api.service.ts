@@ -38,4 +38,15 @@ export class ApiService {
 
 
   }
+  async  get(url:string):Promise<any>{
+    // Create the request options
+    const requestOptions: RequestInit = {
+      method: 'GET',
+      headers: headers,
+    };
+
+    // Send the GET request
+    return await fetch(environment.api_base + url, requestOptions)
+  }
+
 }

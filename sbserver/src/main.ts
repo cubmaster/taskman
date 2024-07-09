@@ -10,7 +10,7 @@ import { auth } from 'express-oauth2-jwt-bearer';
 import bodyParser from 'body-parser';
 import { config } from './config/config';
 //import { Mongo_utilities } from './utility/mongo_utilities';
-import { AiRouter } from './routes/ai';
+import { eventsRouter } from './routes/eventsRouter';
 const app = express();
 const currentConfig = process.env.NODE_ENV ?? 'development';
 // @ts-ignore: TS7053
@@ -31,10 +31,7 @@ MongoClient.connect(env.db, mongo_options)
   .then((client) => {
     console.log('Connected to MongoDB');
     db = client.db('db');
-
-
-
-    app.use('/ai', new AiRouter().router);
+    app.use('/events', new eventsRouter().router);
     // Do something with the database here
   })
   .catch((err) => {
